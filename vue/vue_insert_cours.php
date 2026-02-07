@@ -22,6 +22,7 @@
     <div class="col-md-4">
       <label class="form-label">Candidat :</label>
       <select name="idcandidat" class="form-select" required>
+        
         <option value="">Choisir un candidat </option>
         <?php foreach ($lesCandidats as $c): ?>
           <option value="<?= $c['idcandidat'] ?>"
