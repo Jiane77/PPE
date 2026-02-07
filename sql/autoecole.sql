@@ -49,6 +49,8 @@ CREATE TABLE utilisateur (
     email VARCHAR(100) UNIQUE,
     mdp VARCHAR(255)
 );
+ --create table examnen(idexamen int() Not null AUTO_INCREMENT ; date_debut int();date_fin int();)
+
 
 -- Compte admin par défaut (mdp = admin123)
 INSERT INTO utilisateur (nom, email, mdp)
