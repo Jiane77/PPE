@@ -48,10 +48,10 @@ if (isset($_GET['filtre']) && $_GET['filtre'] != "") {
     $lesMoniteurs = $unControleur->selectAllMoniteurs();
 }
 
-require_once("vue/vue_insert_moniteur.php");
+require_once("vue/admin/vue_insert_moniteur.php");
 ?>
 
 <!-- Barre de recherche -->
 
 
-<?php require_once("vue/vue_select_moniteurs.php"); ?>
+<?php require_once("vue/admin/vue_select_moniteurs.php"); ?>
