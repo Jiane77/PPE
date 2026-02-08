@@ -1,6 +1,5 @@
 <?php
-require_once("modele/modele.class.php");
-
+require_once(__DIR__ . "/../modele/modele.class.php");
 class Controleur {
     private $unModele;
 
@@ -100,5 +99,20 @@ class Controleur {
     public function selectWhere($table, $colonne, $valeur) {
         return $this->unModele->selectWhere($table, $colonne, $valeur);
     }
+    //pour la page login du front 
+    public function loginFront($email, $mdp){
+    $user = $this->unModele->verifConnexion($email,$mdp); // cette fonction va chercher dans la table utilisateur
+    if($user){
+        session_start();
+        $_SESSION['user'] = $user; 
+        return $user;
+    }
+    return false;
+}
+
+//pour la page d'inscription 
+public function inscriptionCandidat($tab) {
+    return $this->unModele->inscriptionCandidat($tab);
+}
 }
 ?>
