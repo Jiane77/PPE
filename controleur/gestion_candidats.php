@@ -48,11 +48,7 @@ if (isset($_GET['filtre']) && $_GET['filtre'] != "") {
     $lesCandidats = $unControleur->selectAllCandidats();
 }
 
-require_once("vue/vue_insert_candidat.php");
+require_once("vue/admin/vue_insert_candidat.php");
 ?>
 
-<!-- Barre de recherche -->
-
-
-
-<?php require_once("vue/vue_select_candidats.php"); ?>
+<?php require_once("vue/admin/vue_select_candidats.php"); ?>
