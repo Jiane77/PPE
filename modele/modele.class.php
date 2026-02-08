@@ -202,5 +202,7 @@ public function selectWhere($table, $colonne, $valeur) {
     return $r->fetch();
 }
 
+
+
 }
 ?>  
