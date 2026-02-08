@@ -48,7 +48,7 @@ if (isset($_GET['filtre']) && $_GET['filtre'] != "") {
     $lesVehicules = $unControleur->selectAllVehicules();
 }
 
-require_once("vue/vue_insert_vehicule.php");
+require_once("vue/admin/vue_insert_vehicule.php");
 ?>
 
-<?php require_once("vue/vue_select_vehicules.php"); ?>
+<?php require_once("vue/admin/vue_select_vehicules.php"); ?>
