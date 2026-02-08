@@ -1,8 +1,5 @@
 <div class="container mt-4 p-4 bg-white rounded shadow">
-<<<<<<< HEAD
   <h3><?= isset($leCandidat) ? "Modifier un Candidat" : "Ajouter un Candidat" ?></h3>
-=======
->>>>>> a3e1e7dee45f99705d1bbe56f188fd994d671083
 
   <form method="post">
     <div class="row">
