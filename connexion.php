@@ -15,7 +15,18 @@ if (isset($_POST['SeConnecter'])) {
         $_SESSION['email'] = $unUser['email'];
         $_SESSION['nom'] = $unUser['nom'];
         $_SESSION['idutilisateur'] = $unUser['idutilisateur'];
-        header("Location: index.php");
+
+        //AJOUT
+        // Stocker le rôle de l'utilisateur pour gérer le front (candidat ou moniteur)
+        $_SESSION['role'] = $unUser['role'];
+
+        //modif
+        // Redirection selon le rôle pour le front
+        if($unUser['role'] == "candidat"){
+            header("Location: front/candidat/dashboard.php");
+        } else if($unUser['role'] == "moniteur"){
+            header("Location: front/moniteur/dashboard.php");
+        }
         exit;
     } else {
         $message = "<div class='bg-red-100 text-red-700 px-4 py-2 rounded mb-3 text-center'>Email ou mot de passe incorrect</div>";
