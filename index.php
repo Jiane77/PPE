@@ -30,7 +30,17 @@ if (!isset($_SESSION['email'])) {
           <a class="nav-link" href="index.php?page=2">Moniteurs</a>
           <a class="nav-link" href="index.php?page=3">Véhicules</a>
           <a class="nav-link" href="index.php?page=4">Cours</a>
-          <a class="nav-link text-warning fw-semibold" href="deconnexion.php">Déconnexion</a>
+    <form action="connexion.php" method="get">
+       <button type="submit" style="background-color:# E6E6FA; color: # E6E6FA; border: 2px solid #ADD8E6; border-radius: 8px; padding: 8px 20px; font-weight: bold; cursor: pointer;">
+    CONNEXION
+</button>
+    </form>
+
+    <form action="inscription.php" method="get" class="ms-2">
+            <button type="submit" style="background-color:# E6E6FA; color: # E6E6FA; border: 2px solid #ADD8E6; border-radius: 8px; padding: 8px 20px; font-weight: bold; cursor: pointer;">
+    inscription
+</button>
+    </form>
         </div>
       </div>
     </nav>
