@@ -53,10 +53,10 @@ if (isset($_GET['filtre']) && $_GET['filtre'] != '') {
 }
 
 // ===== FORMULAIRE =====
-require_once('vue/vue_insert_cours.php');
+require_once('vue/admin/vue_insert_cours.php');
 ?>
 
 <?php
 // ===== TABLEAU =====
-require_once('vue/vue_select_cours.php');
+require_once('vue/admin/vue_select_cours.php');
 ?>
