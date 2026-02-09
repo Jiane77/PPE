@@ -1,64 +1,103 @@
 <?php
 session_start();
 
-// ===== Vérifier la session =====
 if(!isset($_SESSION['email']) || $_SESSION['role'] != "candidat"){
-    header("Location:connexion.php"); // Retour vers login si non connecté
+    header("Location:../../../connexion.php");
     exit;
 }
 
-// Inclure le contrôleur pour récupérer les données
 require_once("../../../controleur/controleur.class.php");
 $unControleur = new Controleur();
 
-// Exemple : récupérer les infos du candidat
-$candidat = $unControleur->selectWhere("candidat", "idcandidat", $_SESSION['idutilisateur']);
+$candidat = $unControleur->selectWhere(
+    "candidat",
+    "idcandidat",
+    $_SESSION['idutilisateur']
+);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <title>Dashboard Candidat</title>
-<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../css/style.css?v=<?php echo time(); ?>">
+
 </head>
-<body class="bg-gray-100 min-h-screen font-sans">
 
-    <!-- Header -->
-    <header class="bg-blue-600 text-white shadow-md">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold">Dashboard Candidat</h1>
-            <nav class="space-x-4">
-                <a href="dashboard.php" class="hover:bg-blue-700 px-3 py-2 rounded transition">Dashboard</a>
-                <a href="quiz.php" class="hover:bg-blue-700 px-3 py-2 rounded transition">Quiz</a>
-                <a href="planning.php" class="hover:bg-blue-700 px-3 py-2 rounded transition">Planning</a>
-                <a href="deconnexion.php" class="hover:bg-red-600 px-3 py-2 rounded transition bg-red-500">Déconnexion</a>
-            </nav>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+
+    <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
+      <img src="../../../images/logo.png" alt="Logo" width="43" height="40" class="me-3">
+      <span>Auto-École</span>
+    </a>
+
+    <div class="navbar-nav">
+      <a class="nav-link active" href="dashboard.php">Dashboard</a>
+      <a class="nav-link" href="quiz.php">Quiz</a>
+      <a class="nav-link" href="planning.php">Planning</a>
+
+      <a class="nav-link text-warning fw-semibold" href="../../../deconnexion.php">
+        Déconnexion
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main class="container mt-5">
+
+  <div class="row g-4"> <!-- ligne principale avec écart entre les colonnes -->
+
+    <!-- Carte image à gauche -->
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card-body text-center d-flex flex-column justify-content-center">
+          <h4 class="fw-bold mb-3">Bienvenue 👋</h4>
+          <p class="text-muted mb-3">
+            <?php echo $_SESSION['nom']; ?>
+          </p> 
+          <div class="w-50 flex justify-content-center align-items-center h-100">
+          <img src="flyer.jpeg" alt="Flyer" class="img-fluid rounded">
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
 
-    <!-- Main content -->
-    <main class="container mx-auto mt-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Carte infos personnelles à droite -->
+    <div class="col-md-6">
+      <div class="card shadow-sm border-0 rounded-4 h-100">
+        <div class="card-body">
+          <h5 class="fw-semibold mb-4 text-center">Mes informations personnelles</h5>
 
-            <!-- Welcome Card -->
-            <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-center items-center">
-                <h2 class="text-xl font-semibold mb-2">Bienvenue, <?php echo $_SESSION['nom']; ?> !</h2>
-                <p class="text-gray-600">Voici vos informations personnelles :</p>
-            </div>
+          <p><strong>Nom :</strong> <?php echo $candidat['nom']; ?></p>
+          <p><strong>Prénom :</strong> <?php echo $candidat['prenom']; ?></p>
+          <p><strong>Email :</strong> <?php echo $candidat['email']; ?></p>
+          <p><strong>Téléphone :</strong> <?php echo $candidat['tel']; ?></p>
+          <p><strong>Adresse :</strong> <?php echo $candidat['adresse']; ?></p>
 
-            <!-- Profile Info Card -->
-            <div class="bg-white shadow-lg rounded-xl p-6">
-                <h3 class="text-lg font-semibold mb-4">Informations du Candidat</h3>
-                <div class="space-y-3 text-gray-700">
-                    <p><span class="font-medium">Nom :</span> <?php echo $candidat['nom']; ?></p>
-                    <p><span class="font-medium">Prénom :</span> <?php echo $candidat['prenom']; ?></p>
-                    <p><span class="font-medium">Email :</span> <?php echo $candidat['email']; ?></p>
-                    <p><span class="font-medium">Téléphone :</span> <?php echo $candidat['tel']; ?></p>
-                    <p><span class="font-medium">Adresse :</span> <?php echo $candidat['adresse']; ?></p>
-                </div>
-            </div>
         </div>
-    </main>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+
+
+<!-- ===== FOOTER ===== -->
+ <footer class="bg-gray-800 text-white text-center py-4 w-full mt-6">
+    &copy; 2026 Auto-École. Tous droits réservés.
+</footer>
 
 </body>
 </html>
