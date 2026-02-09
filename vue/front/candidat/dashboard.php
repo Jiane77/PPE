@@ -53,30 +53,30 @@ $candidat = $unControleur->selectWhere(
 </nav>
 
 <!-- ===== MAIN ===== -->
-<main class="container mt-5">
+<main class="container mt-6 w-50">
 
-  <div class="row g-4"> <!-- ligne principale avec écart entre les colonnes -->
+  <div class="row"> <!-- ligne principale avec écart entre les colonnes -->
 
     <!-- Carte image à gauche -->
     <div class="col-md-6">
       <div class="card shadow-sm border-0 rounded-4 h-100">
         <div class="card-body text-center d-flex flex-column justify-content-center">
-          <h4 class="fw-bold mb-3">Bienvenue 👋</h4>
+          <h4 class="fw-bold mb-4">Bienvenue</h4>
           <p class="text-muted mb-3">
             <?php echo $_SESSION['nom']; ?>
           </p> 
-          <div class="w-50 flex justify-content-center align-items-center h-100">
-          <img src="flyer.jpeg" alt="Flyer" class="img-fluid rounded">
-          </div>
+          
+          <img src="flyer.jpeg" class="flex justify-content-center align-items-center w-100 h-75">
+          
         </div>
       </div>
     </div>
 
     <!-- Carte infos personnelles à droite -->
-    <div class="col-md-6">
+    <div class="col-md-6 mb-5 w-50">
       <div class="card shadow-sm border-0 rounded-4 h-100">
         <div class="card-body">
-          <h5 class="fw-semibold mb-4 text-center">Mes informations personnelles</h5>
+          <h5 class="fw-semibold  mt-6  text-center">Mes informations personnelles</h5>
 
           <p><strong>Nom :</strong> <?php echo $candidat['nom']; ?></p>
           <p><strong>Prénom :</strong> <?php echo $candidat['prenom']; ?></p>
@@ -89,11 +89,11 @@ $candidat = $unControleur->selectWhere(
     </div>
 
   </div>
-
 </main>
 
+<div class="mb-5">
 
-
+</div>
 <!-- ===== FOOTER ===== -->
  <footer class="bg-gray-800 text-white text-center py-4 w-full mt-6">
     &copy; 2026 Auto-École. Tous droits réservés.
