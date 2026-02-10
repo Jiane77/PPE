@@ -44,7 +44,7 @@ $candidat = $unControleur->selectWhere(
       <a class="nav-link" href="quiz.php">Quiz</a>
       <a class="nav-link" href="planning.php">Planning</a>
 
-      <a class="nav-link text-warning fw-semibold" href="../../../deconnexion.php">
+      <a class="nav-link text-warning fw-semibold" href="deconnexion.php">
         Déconnexion
       </a>
     </div>
@@ -73,17 +73,19 @@ $candidat = $unControleur->selectWhere(
     </div>
 
     <!-- Carte infos personnelles à droite -->
-    <div class="col-md-6 mb-5 w-50">
+    <div class="w-50">
       <div class="card shadow-sm border-0 rounded-4 h-100">
         <div class="card-body">
-          <h5 class="fw-semibold  mt-6  text-center">Mes informations personnelles</h5>
-
+          <div class="flex flex-column text-center mb-5">
+          <h5 class="fw-semibold text-center">Mes informations personnelles</h5>
+          </div><br>
+           <div class="d-flex flex-column mb-5 mt-6">
           <p><strong>Nom :</strong> <?php echo $candidat['nom']; ?></p>
           <p><strong>Prénom :</strong> <?php echo $candidat['prenom']; ?></p>
           <p><strong>Email :</strong> <?php echo $candidat['email']; ?></p>
           <p><strong>Téléphone :</strong> <?php echo $candidat['tel']; ?></p>
           <p><strong>Adresse :</strong> <?php echo $candidat['adresse']; ?></p>
-
+        </div>
         </div>
       </div>
     </div>
@@ -94,10 +96,10 @@ $candidat = $unControleur->selectWhere(
 <div class="mb-5">
 
 </div>
+
 <!-- ===== FOOTER ===== -->
  <footer class="bg-gray-800 text-white text-center py-4 w-full mt-6">
     &copy; 2026 Auto-École. Tous droits réservés.
 </footer>
-
 </body>
 </html>
