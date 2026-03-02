@@ -201,8 +201,8 @@ public function selectWhere($table, $colonne, $valeur) {
     $r->execute([":val" => $valeur]);
     return $r->fetch();
 }
-
-
-
+public function  inscriptionCandidat($tab){
+    $sql ="select* from candidat";
+}
 }
 ?>  
