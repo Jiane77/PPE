@@ -19,31 +19,59 @@ if (!isset($_SESSION['email'])) {
     <link rel="icon" type="image/png" href="./images/logo.png">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
-      <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="index.php">
-          <img src="images/logo.png" alt="Logo" width="43" height="40" class="me-3">
-          <span>Auto-École</span>
-        </a>
-        <div class="navbar-nav">
-          <a class="nav-link" href="index.php?page=1">Candidats</a>
-          <a class="nav-link" href="index.php?page=2">Moniteurs</a>
-          <a class="nav-link" href="index.php?page=3">Véhicules</a>
-          <a class="nav-link" href="index.php?page=4">Cours</a>
-    <form action="connexion.php" method="get">
-       <button type="submit" style="background-color:# E6E6FA; color: # E6E6FA; border: 2px solid #ADD8E6; border-radius: 8px; padding: 8px 20px; font-weight: bold; cursor: pointer;">
-    CONNEXION
-</button>
-    </form>
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
 
-    <form action="inscription.php" method="get" class="ms-2">
-            <button type="submit" style="background-color:# E6E6FA; color: # E6E6FA; border: 2px solid #ADD8E6; border-radius: 8px; padding: 8px 20px; font-weight: bold; cursor: pointer;">
-    inscription
-</button>
-    </form>
-        </div>
+    <!-- LOGO -->
+    <a class="navbar-brand" href="index.php">
+      AutoDrive<span>.</span>
+    </a>
+
+    <!-- BURGER -->
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="bi bi-list fs-3" style="color:var(--blue)"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+
+      <!-- MENU CENTRE -->
+      <ul class="navbar-nav mx-auto gap-1">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?page=1">Candidats</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?page=2">Moniteurs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?page=3">Véhicules</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?page=4">Cours</a>
+        </li>
+
+      </ul>
+
+      <!-- DROITE -->
+      <div class="d-flex gap-2 align-items-center">
+
+        <a href="connexion.php" class="nav-link btn-connect">
+          Se connecter
+        </a>
+
+        <a href="inscription.php" class="nav-link btn-signup">
+          S'inscrire
+        </a>
+
       </div>
-    </nav>
+
+    </div>
+  </div>
+</nav>
   <main>
     <?php
     if (isset($_GET['page'])) {
