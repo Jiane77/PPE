@@ -12,38 +12,73 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 /* ---- NAVBAR ---- */
 .navbar {
-  background: linear-gradient(90deg, #0d47a1, #1976d2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  font-weight: 600;
+  background: #fff !important;
+  border-bottom: 1px solid #f0f0f5;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar-brand {
-  font-size: 1.4rem;
-  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  color: #1a1a2e !important;
+  letter-spacing: -1px;
 }
 
-.navbar-brand img {
-  border-radius: 50%;
-  object-fit: cover;
-}
 .navbar-brand span {
-  font-weight: 600;
-  font-size: 1.2rem;
+  color: #2d4ef5;  /* Le point bleu */
 }
 
 .nav-link {
-  color: #fff !important;
-  margin-right: 12px;
-  transition: 0.3s;
-}
-.nav-link:hover {
-  color: #bbdefb !important;
-  transform: translateY(-2px);
+  color: #444 !important;  /* ← SOMBRE, pas blanc */
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px !important;
+  border-radius: 8px;
+  transition: all 0.2s;
+  margin-right: 0;
+  transform: none;
 }
 
+.nav-link:hover {
+  color: #2d4ef5 !important;
+  background: #e8ecff;
+  transform: none;
+}
+
+.btn-connect {
+  border: 2px solid #2d4ef5 !important;
+  color: #2d4ef5 !important;
+  border-radius: 50px;
+  padding: 8px 22px !important;
+  font-weight: 700;
+  background: transparent;
+}
+
+.btn-connect:hover {
+  background: #2d4ef5 !important;
+  color: #fff !important;
+}
+
+.btn-signup {
+  background: #ffe830 !important;
+  color: #1a1a2e !important;
+  border-radius: 50px;
+  padding: 8px 22px !important;
+  font-weight: 800;
+  border: none;
+}
+
+.btn-signup:hover {
+  background: #ffd600 !important;
+  transform: scale(1.04);
+}
 /* ---- CONTAINERS ---- */
 .container {
   background: #fff;
