@@ -1,16 +1,52 @@
 <?php
 require_once("controleur/controleur.class.php");
 $unControleur = new Controleur();
+
 function star($required) {
     return $required ? '<span style="color:red">*</span>' : '';
 }
 
 
 if (isset($_POST['Inscrire'])) {
-    // On appelle la fonction du contrôleur (qui appellera celle du modèle)
-    $res = $unControleur->inscriptionCandidat($_POST);
-    if ($res) {
+    $role = $_POST['role'];
+
+    $tabUser = [
+       ':nom'     => $_POST['nom'],
+        ':prenom'  => $_POST['prenom'],
+        ':email'   => $_POST['email'],
+        ':tel'     => $_POST['tel'] ?? '',
+        ':adresse' => $_POST['adresse'] ?? '',
+        ':mdp'     => $_POST['mdp'],
+        ':role'    => $role
+    ];
+
+    $res1 = $unControleur->insertUtilisateur($tabUser);
+
+    if ($res1) {
+        if ($role === 'candidat') {
+            $tabCandidat = [
+                ':nom'     => $_POST['nom'],
+                ':prenom'  => $_POST['prenom'],
+                ':email'   => $_POST['email'],
+                ':tel'     => $_POST['tel'],
+                ':adresse' => $_POST['adresse']
+            ];
+            $res2 = $unControleur->insertCandidat($tabCandidat);
+        } elseif ($role === 'moniteur') {
+            $tabMoniteur = [
+                ':nom'     => $_POST['nom'],
+                ':prenom'  => $_POST['prenom'],
+                ':email'   => $_POST['email'],
+                ':tel'     => $_POST['tel'],
+                ':adresse' => $_POST['adresse']
+            ];
+            $res2 = $unControleur->insertMoniteur($tabMoniteur);
+        }
+    }
+
+    if ($res1 && $res2) {
         header("Location: connexion.php?inscription=reussie");
+        exit;
     } else {
         $msg = "Erreur lors de l'inscription.";
     }
@@ -37,6 +73,13 @@ if (isset($_POST['Inscrire'])) {
             <input type="text" name="prenom" placeholder="Prénom" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
          </div>
          <div class="flex flex-col">
+          <label for="role">Rôle<?= star(true) ?></label>
+    <select name="role" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+        <option value="candidat">Candidat</option>
+        <option value="moniteur">Moniteur</option>
+    </select>
+    </div>
+         <div class="flex flex-col">
             <label for="email">Email<?= star(true) ?></label>
              <input type="email" name="email" placeholder="Email" required class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
          </div>
@@ -47,9 +90,10 @@ if (isset($_POST['Inscrire'])) {
          <div class="flex flex-col">
             <label for="adresse">Adresse<?= star(true) ?></label>
             <input type="text" name="adresse" placeholder="Adresse" required class="p-3 border rounded-lg md:col-span-2 outline-none">
+         </div>
+         <div class="felx flex-col">
             <label for="password">Mot de passe<?= star(true) ?></label>
             <input type="password" name="mdp" placeholder="Mot de passe" required class="p-3 border rounded-lg md:col-span-2 outline-none">
-
          </div>
             <button type="submit" name="Inscrire" class="md:col-span-2 bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition">
                 S'inscrire maintenant
