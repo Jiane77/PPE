@@ -11,8 +11,6 @@ class Controleur {
     public function verifConnexion($email, $mdp) {
         return $this->unModele->verifConnexion($email, $mdp);
     }
-
-
     // --- Candidats ---
     public function selectAllCandidats() {
         return $this->unModele->selectAllCandidats();
@@ -22,9 +20,11 @@ class Controleur {
     }
 
     public function insertCandidat($tab) {
-        $this->unModele->insertCandidat($tab);
+       return $this->unModele->insertCandidat($tab);
     }
-
+    public function insertUtilisateur($tab) {
+    return $this->unModele->insertUtilisateur($tab);
+    }
     public function updateCandidat($tab) {
         $this->unModele->updateCandidat($tab);
     }
@@ -43,7 +43,7 @@ class Controleur {
     }
 
     public function insertMoniteur($tab) {
-        $this->unModele->insertMoniteur($tab);
+       return $this->unModele->insertMoniteur($tab);
     }
 
     public function updateMoniteur($tab) {
@@ -110,9 +110,5 @@ class Controleur {
     return false;
 }
 
-//pour la page d'inscription 
-public function inscriptionCandidat($tab) {
-    return $this->unModele->inscriptionCandidat($tab);
-}
 }
 ?>
