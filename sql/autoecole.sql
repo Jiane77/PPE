@@ -72,3 +72,10 @@ VALUES ('Moniteur Test', 'moniteur@test.com', SHA2('moniteur123', 256), 'moniteu
 -- Données métiers
 INSERT INTO candidat (idcandidat, nom, prenom, email, tel, adresse)
 VALUES (2, 'Haroun', 'Djihane', 'candidat@test.com', '0102030405', '123 Rue du Code');
+
+/*ajouter des colonnes*/
+mysql> ALTER TABLE utilisateur
+    -> ADD COLUMN prenom VARCHAR(50) AFTER nom,
+    -> ADD COLUMN tel VARCHAR(20) AFTER email,
+    -> ADD COLUMN adresse VARCHAR(255) AFTER tel;
+
