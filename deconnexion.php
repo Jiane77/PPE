@@ -1,6 +1,7 @@
 <?php
 session_start();
-session_destroy();
-header("Location: connexion.php");
+$_SESSION = []; 
+session_destroy();   
+header("Location: index.php");
 exit;
 ?>
