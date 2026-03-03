@@ -22,9 +22,9 @@ if (isset($_POST['SeConnecter'])) {
         if ($unUser['role'] == "candidat") {
             header("Location: vue/front/candidat/dashboard.php");
         } else if ($unUser['role'] == "moniteur") {
-            header("Location: front/moniteur/dashboard.php");
+            header("Location: vue/front/moniteur/dashboard.php");
         } else if ($unUser['role'] == "admin") {
-            header("Location: index.php"); // Précise bien le fichier index.php
+            header("Location: index.php");
         }
         exit;
     } else {
