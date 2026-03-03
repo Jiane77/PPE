@@ -25,7 +25,7 @@
     public function insertCandidat($t) {
         $sql = "INSERT INTO candidat VALUES (NULL,:nom,:prenom,:email,:tel,:adresse);";
         $r = $this->pdo->prepare($sql);
-        $r->execute($t);
+        return $r->execute($t);
     }
     public function updateCandidat($t) {
         $sql = "UPDATE candidat
@@ -49,7 +49,7 @@
     public function insertMoniteur($t) {
         $sql = "INSERT INTO moniteur VALUES (NULL,:nom,:prenom,:email,:tel,:adresse);";
         $r = $this->pdo->prepare($sql);
-        $r->execute($t);
+        return $r->execute($t);
     }
     public function updateMoniteur($t) {
         $sql = "UPDATE moniteur
@@ -201,8 +201,13 @@ public function selectWhere($table, $colonne, $valeur) {
     $r->execute([":val" => $valeur]);
     return $r->fetch();
 }
-public function  inscriptionCandidat($tab){
-    $sql ="select* from candidat";
+
+// Insère dans la table utilisateur (pour la connexion)
+public function insertUtilisateur($tab) {
+    $sql = "INSERT INTO utilisateur (nom, prenom, email, tel, adresse, mdp, role) 
+            VALUES (:nom, :prenom, :email, :tel, :adresse, SHA2(:mdp, 256), :role)";
+    $r = $this->pdo->prepare($sql);
+    return $r->execute($tab);
 }
 }
 ?>  
